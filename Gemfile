@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+git_source(:github) { |repo| "https://github.com/omniauth/omniauth-github" }
 
 ruby '2.6.1'
 
@@ -22,7 +23,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'omniauth'
-gem 'omniauth-github'
+gem 'omniauth-facebook'
 gem 'dotenv-rails'
 gem 'pry'
 gem 'bcrypt'
