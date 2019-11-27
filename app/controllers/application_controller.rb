@@ -4,9 +4,6 @@ class ApplicationController < ActionController::Base
     User.find(session[:user_id])
   end
 
-  def admin?
-    current_user.admin
-  end
 
   helper_method :current_user
 end
