@@ -1,5 +1,32 @@
 class ShowsController < ApplicationController
 
+  def index
+    @shows = Show.all 
+  end
+
+  def show 
+    @show = Show.find(params[:id])
+  end
+
+  def new 
+  end
+
+  def create
+    show = Show.create(show_params)
+    redirect_to show_path(show)
+  end
+
+  def edit
+    @show = Show.find(params[:id])
+    show.update(show_params)
+    redirect_to show_path(show)
+  end
+
+  private
+
+  def show_params
+    params.require(:show).permit(:show_title, :user_id)
+
   #   helpers do
   #     def redirect_if_not_authorized
   #       @show = Show.find_by_id(params[:id])
