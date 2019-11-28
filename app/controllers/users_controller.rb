@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
+    helper_method :logged_in?
     
+  def logged_in?
+    !current_user.nil?
+  end
+
   def new
   end
 
