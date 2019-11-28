@@ -1,4 +1,5 @@
 class ShowsController < ApplicationController
+  # before_action :require_login
 
   def index
     @shows = Show.all 
@@ -13,8 +14,12 @@ class ShowsController < ApplicationController
   end
 
   def create
-    @show = Show.create(show_params)
-    redirect_to show_path(@show)
+    @show = Show.new(show_params)
+    if @show.save
+      redirect_to show_path(@show)
+    else
+      render :new
+    end
   end
 
   def edit
