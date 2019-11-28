@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-    helper_method :logged_in?
+    before_action :require_login, only: :show
+    # helper_method :logged_in?
     
 #   def logged_in?
 #     !current_user.nil?
@@ -11,12 +12,15 @@ class UsersController < ApplicationController
 
   def create
       @user = User.create(user_params)
-      session[:user_id] = @user.id
-      redirect_to user_path(@user)
-  end
+      if @user.save
+        log_in(@user)
+        redirect_to user_path(@user)
+      else
+        render :new
+      end
+    end
 
   def show
-      require_login
       @user = User.find(params[:id])
   end
 
@@ -24,7 +28,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-      params.require(:user).permit(:username, :password)
+      params.require(:user).permit(:username, :email, :password)
   end
 
   def require_login

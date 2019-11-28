@@ -13,8 +13,8 @@ class ShowsController < ApplicationController
   end
 
   def create
-    show = Show.create(show_params)
-    redirect_to show_path(show)
+    @show = Show.create(show_params)
+    redirect_to show_path(@show)
   end
 
   def edit
