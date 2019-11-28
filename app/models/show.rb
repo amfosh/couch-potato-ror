@@ -9,4 +9,5 @@ class Show < ApplicationRecord
     end
 
     def watched 
+    end
 end

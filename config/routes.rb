@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
-  
+  get '/user/:id' => 'shows#show'
+
   resources :users, only: [:new, :create, :show, :edit, :update]
   resources :shows, only: [:new, :create, :show, :edit, :update]
   resources :notes, only: [:create, :edit]

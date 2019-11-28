@@ -9,6 +9,7 @@ class ShowsController < ApplicationController
   end
 
   def new 
+    @show = Show.new
   end
 
   def create
@@ -27,14 +28,14 @@ class ShowsController < ApplicationController
   def show_params
     params.require(:show).permit(:show_title, :user_id)
 
-  #   helpers do
-  #     def redirect_if_not_authorized
-  #       @show = Show.find_by_id(params[:id])
-  #       if current_user != @show.user
-  #         redirect '/shows'
-  #       end
-  #     end
-  #   end
+    helpers do
+      def redirect_if_not_authorized
+        @show = Show.find_by_id(params[:id])
+        if current_user != @show.user
+          redirect '/shows'
+        end
+      end
+    end
     
   #   get '/shows' do
   #     if logged_in?
@@ -108,3 +109,4 @@ class ShowsController < ApplicationController
   #   end
   # end
   end
+end
