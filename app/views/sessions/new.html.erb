@@ -1,9 +1,21 @@
 <h3>Login</h3>
-<%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
-	<label for="username">Username:</label>
-	<input type="text" name="username":><br>
-	<label for="password">Password:</label>
-	<input type="password" name="password">
-	<input type="submit" value="submit">
-<% end %><br>
+<%= form_for(:session, url: login_path) do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %><br>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %><br>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %><br>
+
+      <%= f.submit "Log in", class: "btn btn-primary" %>
+
+	        <div class='social-icons'>
+        <%= link_to "Sign in with Github", "/auth/github", class: "fab fa-github"%>
+      </div>
+
+      <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+
+    <% end %><br>
 <p>Go back to the CouchPotato <a href="/">Homepage</a>.</p>

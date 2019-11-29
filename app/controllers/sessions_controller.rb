@@ -1,25 +1,23 @@
 class SessionsController < ApplicationController
-    helper_method :log_in
 
     def new
     end
 
     def create
-        if auth
-          @user = User.find_or_create_by(uid: auth['uid']) do |u|
-          u.username = auth['info']['name']
-          u.email = auth['info']['email']
-          u.password = SecureRandom.hex
-        end
+      # if auth
+      #   @user = User.find_or_create_by(uid: auth['uid']) do |u|
+      #     u.username = auth['info']['name']
+      #     u.email = auth['info']['email']
+      #     u.password = SecureRandom.hex
+      #   end
+        
+      #   session[:user_id] = @user.id
+      #   redirect_to @user
     
-        session[:user_id] = @user.id
-        redirect_to @user
-    
-        else
-
+      #   else
         @user = User.find_by(email: params[:session][:email])
         if @user && @user.authenticate(params[:session][:password])
-            invalid login and require login
+            # invalid login and require login
             session[:user_id] = @user.id
             redirect_to @user
         else
@@ -29,11 +27,11 @@ class SessionsController < ApplicationController
 
 
     def destroy
-        session.clear
-        redirect_to '/'
+      session.clear
+      redirect_to '/'
     end
 
-    private
+  private
 
   def auth
     request.env['omniauth.auth']
