@@ -2,7 +2,10 @@ class ShowsController < ApplicationController
   # before_action :require_login
 
   def index
-    @shows = Show.all 
+    if logged_in?
+      @user = current_user
+      @shows = current_user.shows 
+    end
   end
 
   def show 
@@ -16,7 +19,7 @@ class ShowsController < ApplicationController
   def create
     @show = Show.new(show_params)
     if @show.save
-      redirect_to show_path(@show)
+      redirect_to @show
     else
       render :new
     end
@@ -32,6 +35,7 @@ class ShowsController < ApplicationController
 
   def show_params
     params.require(:show).permit(:show_title, :user_id)
+  end
 
     helpers do
       def redirect_if_not_authorized
@@ -40,7 +44,6 @@ class ShowsController < ApplicationController
           redirect '/shows'
         end
       end
-    end
     
   #   get '/shows' do
   #     if logged_in?
