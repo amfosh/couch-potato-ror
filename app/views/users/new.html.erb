@@ -1,9 +1,6 @@
  <h1>Sign up</h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-
-  <%= form_for(@user, url: signup_path) do |f| %> 
+  <%= form_for(@user) do |f| %> 
 
     <%= f.label :username %>
     <%= f.text_field :username %><br>
@@ -16,8 +13,8 @@
 
     <%= f.submit "Sign Up", class: "btn btn-primary" %>
   <% end %>
+  <br>
+<p>I'm already a CouchPotato <%= link_to "User", login_path %></a>.</p>
   </div>
 </div>
 
-<br>
-<p>I'm already a CouchPotato <a href="/login">User</a>.</p>

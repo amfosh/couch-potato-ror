@@ -3,7 +3,7 @@ class User < ApplicationRecord
     has_many :shows
     has_many :notes, through: :shows 
     has_many :statuses, through: :shows
-    validates :email, uniqueness: true
+    validates :email, uniqueness: true, presence: true
     validates :username, :password, presence: true
 
     def self.find_or_create_by_omniauth(auth_hash)

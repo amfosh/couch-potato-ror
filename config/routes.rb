@@ -1,20 +1,20 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root 'users#home'
-  get '/signup' => 'users#new'
-  post '/signup' => 'users#create'
-
+  # # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root 'sessions#welcome'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
+  get '/signup' => 'users#new'
+  post '/signup' => 'users#create'
   delete '/logout' => 'sessions#destroy'
 
-  get '/auth/github/callback' => 'sessions#create'
+  # get '/auth/github/callback' => 'sessions#create'
 
-  get '/user/:id' => 'shows#show'
-  get 'shows' => 'shows#shows'
+  # get '/user/:id' => 'shows#show'
+  # get 'shows' => 'shows#shows'
 
-  resources :users, only: [:new, :create, :show, :edit, :update]
-  resources :shows, only: [:new, :create, :show, :edit, :update]
-  resources :notes, only: [:create, :edit]
-  resources :watched
+  resources :users
+  resources :shows
+  resources :notes
+  resources :statuses
+  resource :sessions, only: [:new, :create, :destroy]
 end

@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
-    def new
-    end
+  def welcome
+  end
 
     def create
       # if auth
@@ -15,15 +15,15 @@ class SessionsController < ApplicationController
       #   redirect_to @user
     
       #   else
-        @user = User.find_by(email: params[:session][:email])
-        if @user && @user.authenticate(params[:session][:password])
-            # invalid login and require login
-            session[:user_id] = @user.id
-            redirect_to @user
-        else
-            render :new
-        end
-    end
+    #     @user = User.find_by(email: params[:session][:email])
+    #     if @user && @user.authenticate(params[:session][:password])
+    #         # invalid login and require login
+    #         session[:user_id] = @user.id
+    #         redirect_to @user
+    #     else
+    #         render :new
+    #     end
+    # end
 
 
     def destroy
