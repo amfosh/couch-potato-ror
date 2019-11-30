@@ -3,7 +3,25 @@ class SessionsController < ApplicationController
   def welcome
   end
 
-    def create
+  def destroy
+    session.delete(:user_id)
+    redirect_to '/'
+  end
+
+  def new
+  end
+
+  def create 
+    @user = User.find_by(username: params[:user][:username])
+    if @user && @user.authenticate(password: params[:user][:password])
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
+    else
+      flash[:error] = "Sorry, login was incorrect. Please try again."
+      redirect_to login_path
+    end
+  end
+end
       # if auth
       #   @user = User.find_or_create_by(uid: auth['uid']) do |u|
       #     u.username = auth['info']['name']
@@ -26,14 +44,8 @@ class SessionsController < ApplicationController
     # end
 
 
-    def destroy
-      session.clear
-      redirect_to '/'
-    end
+  # private
 
-  private
-
-  def auth
-    request.env['omniauth.auth']
-  end
-end
+  # def auth
+  #   request.env['omniauth.auth']
+  # end
