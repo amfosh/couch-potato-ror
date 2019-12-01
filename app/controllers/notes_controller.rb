@@ -24,7 +24,7 @@ class NotesController < ApplicationController
     def index
         if @show = Show.find_by_id(params[:show_id])
             @notes = @show.notes
-          else
+        else
             @notes = Note.all
         end
     end

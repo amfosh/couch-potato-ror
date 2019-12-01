@@ -1,8 +1,8 @@
 <h1>Notes</h1>
 
-<ol>
-<% @notes.each do |n| %>
-
-<% n.content %>
-<% end %>
-</ol>
+    <% @notes.each do |note| %>
+      <li>
+        <h3><%= link_to note.show.show_title, show_path(note.show) %></h3>
+        <p><%= note.content %></p>
+      </li>
+    <% end %>
