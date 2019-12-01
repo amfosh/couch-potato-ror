@@ -1,9 +1,9 @@
-<h1>Add a Note</h2>
+<h1>Add a Note for <%= @note.show.show_title %></h2>
 
 <%= form_for(@note) do |f| %>
 <div>
   <%= f.label :content %>
-  <%= f.text_area :content %>
+  <%= f.text_area :content, size: "30x2" %>
 </div>
   <%= f.hidden_field :show_id %>
 

@@ -4,7 +4,7 @@ class NotesController < ApplicationController
         if @show = Show.find_by_id(params[:show_id])
            @note = @show.notes.build
         else
-            @show = Show.new
+            @note = Note.new
         end
     end
     
@@ -17,6 +17,21 @@ class NotesController < ApplicationController
         end
     end
 
+    def show
+        @note = Note.find_by_id(params[:id])
+      end
+
     def index
+        if @show = Show.find_by_id(params[:show_id])
+            @notes = @show.notes
+          else
+            @notes = Note.all
+        end
+    end
+
+    private
+
+    def note_params
+        params.require(:note).permit(:show_id, :content)
     end
 end

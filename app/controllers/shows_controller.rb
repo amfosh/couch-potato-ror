@@ -21,6 +21,13 @@ class ShowsController < ApplicationController
   def edit
   end
 
+  def index
+    if logged_in?
+      @user = current_user
+      @shows = current_user.shows 
+    end
+  end
+
   private
 
   def show_params
@@ -28,12 +35,7 @@ class ShowsController < ApplicationController
   end
   # before_action :require_login
 
-  # def index
-  #   if logged_in?
-  #     @user = current_user
-  #     @shows = current_user.shows 
-  #   end
-  # end
+
 
 
 
