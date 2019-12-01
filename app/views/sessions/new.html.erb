@@ -1,21 +1,16 @@
-<h3>Login</h3>
+<h1>Login</h1>
 
 <p><%= flash[:error] %></p>
 
-<%= form_for(:user) do |f| %>
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %><br>
+<%= form_for(:session, url: login_path) do |f|%>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %><br>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
 
-      <%= f.submit "Log in", class: "btn btn-primary" %>
 
-	        <div class='social-icons'>
-        <%= link_to "Sign in with Github", "/auth/github", class: "fab fa-github"%>
-      </div>
+  <%= f.submit "Log In" %>
+<% end %>
 
-      <p>New user? <%= link_to "Sign up now!", signup_path %></p>
-
-    <% end %><br>
 <p>Go back to the CouchPotato <a href="/">Homepage</a>.</p>
