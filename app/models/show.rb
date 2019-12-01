@@ -3,6 +3,7 @@ class Show < ApplicationRecord
     belongs_to :user
     has_many :notes
     has_one :status
+    validates :show_title, presence: true 
 
     def self.my_shows(user)
         where(user_id: user)

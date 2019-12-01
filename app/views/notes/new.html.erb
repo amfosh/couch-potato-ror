@@ -1,5 +1,7 @@
 <h1>Add a Note for <%= @note.show.show_title %></h2>
 
+<%= render partial: 'layouts/errors', locals: {object: @note} %>
+
 <%= form_for(@note) do |f| %>
 <div>
   <%= f.label :content %>

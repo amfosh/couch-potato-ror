@@ -1,7 +1,9 @@
 <h1>Welcome, CouchPotato!</h1><br>
 <h2>Your Watchlist:</h2>
-<% @shows.each do |s| %>
-  <h4><% s.show_title %></h4>
-  <% link_to "Add a note", new_show_note_path(s.id) %>
+
+   <% @shows.each do |s| %>
+   <h4><li><%= link_to s.show_title, show_path(s.id) %></h4>
+   <%= link_to "Add a note", new_show_note_path(s.id) %></li><br><br>
 <% end %>
-<p>Add a new show <a href="/shows/new">here.</a></p>
+
+<p>Add a new show <a href="/shows/new">here.</p>
