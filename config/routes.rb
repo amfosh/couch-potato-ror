@@ -13,8 +13,10 @@ Rails.application.routes.draw do
   # get 'shows' => 'shows#shows'
 
   resources :users
-  resources :shows
+  resources :shows do
+    resources :notes, only: [:new, :index]
   resources :notes
   resources :statuses
   resource :sessions, only: [:new, :create, :destroy]
+  end
 end

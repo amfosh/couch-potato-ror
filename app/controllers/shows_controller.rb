@@ -14,6 +14,13 @@ class ShowsController < ApplicationController
     end
   end
 
+  def show 
+    @show = Show.find(params[:id])
+  end
+  
+  def edit
+  end
+
   private
 
   def show_params
@@ -28,9 +35,7 @@ class ShowsController < ApplicationController
   #   end
   # end
 
-  def show 
-    @show = Show.find(params[:id])
-  end
+
 
   # def new 
   #   @show = Show.new
@@ -45,11 +50,7 @@ class ShowsController < ApplicationController
   #   end
   # end
 
-  # def edit
-  #   @show = Show.find(params[:id])
-  #   show.update(show_params)
-  #   redirect_to show_path(show)
-  # end
+
 
 
   #   helpers do
