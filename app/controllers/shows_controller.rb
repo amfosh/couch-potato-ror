@@ -1,4 +1,24 @@
 class ShowsController < ApplicationController
+
+  def new 
+    @show = Show.new
+  end
+
+  def create
+    @show = Show.new(show_params)
+    @show.user_id = session[:user_id]
+    if @show.save
+      redirect_to show_path(@show)
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def show_params
+    params.require(:show).permit(:show_title)
+  end
   # before_action :require_login
 
   # def index
@@ -8,9 +28,9 @@ class ShowsController < ApplicationController
   #   end
   # end
 
-  # def show 
-  #   @show = Show.find(params[:id])
-  # end
+  def show 
+    @show = Show.find(params[:id])
+  end
 
   # def new 
   #   @show = Show.new
@@ -31,11 +51,6 @@ class ShowsController < ApplicationController
   #   redirect_to show_path(show)
   # end
 
-  # private
-
-  # def show_params
-  #   params.require(:show).permit(:show_title, :user_id)
-  # end
 
   #   helpers do
   #     def redirect_if_not_authorized

@@ -3,4 +3,4 @@
 <%# <% @shows.each do |show| %>
     <%# <li><a href="/shows/<%= show.id"><%= show.show_title %></a></li> %>
 <%# <%end%> 
-<p>Add a new show <a href="/shows/new">here.</a></p> %>
+<p>Add a new show <%= link_to "here.", new_show_path %></p> %>

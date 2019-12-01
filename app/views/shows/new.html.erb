@@ -1,12 +1,9 @@
 <h2>Add a show you want to watch:</h2>
-<%= form_for @show do |f| %> 
 
+  <%= form_for(@show) do |f| %> 
+  <div>
     <%= f.label :show_title %>
     <%= f.text_field :show_title %><br>
-    <%# <%= f.label "Watched?" %>
-    <%# <%= f.check_box :status %><br>
-
-    <%= f.submit "Add show" %>
-  <% end %>
   </div>
-</div>
+    <%= f.submit %>
+  <% end %>
