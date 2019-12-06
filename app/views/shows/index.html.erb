@@ -3,7 +3,8 @@
 
    <% @shows.each do |s| %>
    <h4><li><%= link_to s.show_title, show_path(s.id) %></h4>
-   <%= link_to "Add a note", new_show_note_path(s.id) %></li><br><br>
+    <p><%= s.status.watched %></p>
+    <%= link_to "Show Notes", show_notes_path(s.id)%> 
 <% end %>
 
 <p>Add a new show <a href="/shows/new">here.</p>

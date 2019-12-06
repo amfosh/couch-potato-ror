@@ -1,8 +1,15 @@
-<h1>Notes</h1>
+<% if @show %>
+  <h1>Notes for <%= @show.show_title%></h1>
+<% else %>
+  <h1>All Notes </h1>
+<% end %>
 
-    <% @notes.each do |note| %>
-      <li>
+<ul>
+<% @notes.each do |note| %>
+
+     <li>
         <h3><%= link_to note.show.show_title, show_path(note.show) %></h3>
-        <p><%= note.content %></p>
-      </li>
-    <% end %>
+        <p><%= note.content %>
+
+<% end %>
+</ul>
