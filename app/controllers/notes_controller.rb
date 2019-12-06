@@ -10,12 +10,13 @@ class NotesController < ApplicationController
     
     def create
         @note = current_user.notes.build(note_params)
+    
         if @note.save
-            redirect_to note_path(@note)
+          redirect_to show_path(@show)
         else
-            render :new
+          render 'new'
         end
-    end
+      end
 
     def show
         @note = Note.find_by_id(params[:id])
@@ -32,6 +33,6 @@ class NotesController < ApplicationController
     private
 
     def note_params
-        params.require(:note).permit(:show_id, :content)
+        params.require(:note).permit(:show_id, :user_id, :content)
     end
 end

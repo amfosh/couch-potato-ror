@@ -1,6 +1,3 @@
 class Status < ApplicationRecord
-    belongs_to :show
-
-    def watched?
-    end
+    has_many :shows
 end

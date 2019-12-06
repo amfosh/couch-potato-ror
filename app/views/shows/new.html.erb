@@ -7,5 +7,10 @@
     <%= f.label :show_title %>
     <%= f.text_field :show_title %><br>
   </div>
+  <div>
+  Select a Watch Status:
+  <%= f.collection_select(:status_id, Status.all, :id, :watched) %>
+  </div>
     <%= f.submit %>
   <% end %>
+

@@ -31,7 +31,7 @@ class ShowsController < ApplicationController
   private
 
   def show_params
-    params.require(:show).permit(:show_title)
+    params.require(:show).permit(:show_title, :status_id, status_attributes: [:watched])
   end
   # before_action :require_login
 
