@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/stylesheets/main.css"/>
     </head>
 
+   
 
   <body>
     <div class="wrapper">
@@ -24,10 +25,7 @@
      <img src="/images/banner.png" alt="CouchPotato Header" class="img-responsive main-image"></center>
      </header>
 
-     <div><div align="right">
-     <%= link_to "Log Out", logout_path, method: "delete" %>
-     </div>
-      </div>
+ <div align="right"><%= render_nav_bar %></div>
 
  <%= yield %> 
 

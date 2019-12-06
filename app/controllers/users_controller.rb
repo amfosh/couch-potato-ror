@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
     
-#   def logged_in?
-#     !current_user.nil?
-#   end
+  def logged_in?
+    !current_user.nil?
+  end
 
   def new
     # if logged_in?
