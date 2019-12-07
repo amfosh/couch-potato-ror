@@ -1,4 +1,6 @@
 class ShowsController < ApplicationController
+  before_action :set_show, only:[:show, :edit, :update]
+  before_action :redirect_if_not_logged_in
 
   def new 
     @show = Show.new
@@ -21,6 +23,14 @@ class ShowsController < ApplicationController
   def edit
   end
 
+  def update
+    if @show.update(show_params)
+      redirect_to show_path(@show)
+    else
+      render :edit
+    end
+  end
+
   def index
     if logged_in?
       @user = current_user
@@ -32,6 +42,11 @@ class ShowsController < ApplicationController
 
   def show_params
     params.require(:show).permit(:show_title, :status_id, status_attributes: [:watched])
+  end
+
+  def set_show
+    @show = Show.find_by(params[:id])
+    redirect_to show_path if !@show
   end
   # before_action :require_login
 

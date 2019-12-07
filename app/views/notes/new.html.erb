@@ -6,10 +6,14 @@
   <% if params[:show_id] %>
     <%= f.hidden_field :show_id %>
   <% else %>
+    <div>
+      <%= f.label :show_id, "Select a Show" %>
+      <%= f.collection_select(:show_id, Show.all, :id, :show_title)%>
+    </div>
+  <% end %>
 <div>
   <%= f.label :content %>
   <%= f.text_area :content, size: "30x2" %>
 </div>
-<% end %>
 <%= f.submit "Add Note" %>
 <% end %>

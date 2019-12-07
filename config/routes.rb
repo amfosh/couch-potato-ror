@@ -12,11 +12,9 @@ Rails.application.routes.draw do
   # get '/user/:id' => 'shows#show'
   # get 'shows' => 'shows#shows'
 
-  resources :users
+  resources :notes
   resources :shows do
     resources :notes, only: [:new, :index]
   end
-  resources :notes
-  resources :statuses
-  resource :sessions, only: [:new, :create, :destroy]
+  resources :users, only: [:show]
   end

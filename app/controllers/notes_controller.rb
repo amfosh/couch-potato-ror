@@ -1,4 +1,5 @@
 class NotesController < ApplicationController
+    before_action :redirect_if_not_logged_in
 
     def new
         if @show = Show.find_by_id(params[:show_id])
@@ -10,11 +11,10 @@ class NotesController < ApplicationController
     
     def create
         @note = current_user.notes.build(note_params)
-    
         if @note.save
-          redirect_to show_path(@show)
+          redirect_to note_path(@show)
         else
-          render 'new'
+          render :new
         end
       end
 
