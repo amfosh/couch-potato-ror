@@ -5,11 +5,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    # if logged_in?
-    #   redirect_to user_path
-    # else
-      @user = User.new
-    # end
+    @user = User.new
   end
 
   def create
@@ -23,17 +19,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    redirect_if_not_logged_in
     @user = User.find_by_id(params[:id])
     redirect_to "/" if !@user
-#     if logged_in?
-#       if @user == User.find_by(id: params[:id])
-#         render :layout => "application"
-#       else
-#         redirect_to user_path(@user)
-#       end
-#     else
-#       redirect_to login_path
-#     end
   end
 
   private
@@ -41,8 +29,4 @@ class UsersController < ApplicationController
   def user_params
       params.require(:user).permit(:username, :email, :password)
   end
-
-#   def require_login
-#       redirect_to '/' unless session.include? :user_id
-#   end
 end

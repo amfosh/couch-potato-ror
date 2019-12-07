@@ -3,24 +3,25 @@ class NotesController < ApplicationController
 
     def new
         if @show = Show.find_by_id(params[:show_id])
-           @note = @show.notes.build
+            @note = @show.notes.build
         else
             @note = Note.new
         end
     end
-    
-    def create
+ 
+     def create
         @note = current_user.notes.build(note_params)
+        byebug
         if @note.save
-          redirect_to note_path(@show)
+            redirect_to note_path(@note)
         else
-          render :new
+            render :new
         end
-      end
+    end
 
     def show
         @note = Note.find_by_id(params[:id])
-      end
+    end
 
     def index
         if @show = Show.find_by_id(params[:show_id])
@@ -33,6 +34,6 @@ class NotesController < ApplicationController
     private
 
     def note_params
-        params.require(:note).permit(:show_id, :user_id, :content)
+        params.require(:note).permit(:show_id, :content)
     end
 end

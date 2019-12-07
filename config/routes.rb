@@ -7,14 +7,15 @@ Rails.application.routes.draw do
   post '/signup' => 'users#create'
   delete '/logout' => 'sessions#destroy'
 
-  # get '/auth/github/callback' => 'sessions#create'
+  get 'auth/google_oauth2/callback' => 'sessions#omniauth'
 
   # get '/user/:id' => 'shows#show'
   # get 'shows' => 'shows#shows'
 
-  resources :notes
+
   resources :shows do
     resources :notes, only: [:new, :index]
   end
+  resources :notes
   resources :users, only: [:show]
   end
