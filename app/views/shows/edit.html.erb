@@ -1,4 +1,15 @@
 <h2>Show you are editing:<%= @show.show_title %></h2>
+<%= form_for(@show) do |f| %> 
+  <div>
+    <%= f.label :show_title %>
+    <%= f.text_field :show_title %><br>
+  </div>
+  <div>
+  Update your Watch Status:
+  <%= f.collection_select(:status_id, Status.all, :id, :watched) %>
+  </div>
+    <%= f.submit %>
+  <% end %>
 
 
 <p>Go back to your <a href="/shows">watchlist</a>.</p><br>

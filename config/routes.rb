@@ -11,9 +11,8 @@ Rails.application.routes.draw do
 
   # get '/user/:id' => 'shows#show'
   # get 'shows' => 'shows#shows'
-
-
-  resources :shows do
+  patch 'shows/:id', to: 'shows#update'
+  resources :shows do 
     resources :notes, only: [:new, :index]
   end
   resources :notes

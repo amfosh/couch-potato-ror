@@ -23,6 +23,14 @@ class ShowsController < ApplicationController
   def edit
   end
 
+  def delete
+    @show = Show.find_by_id(params[:id])
+    if logged_in? && @show.user_id == current_user.id	
+      @show.destroy	
+      redirect_to show_path
+    end
+  end
+
   def update
     if @show.update(show_params)
       redirect_to show_path(@show)
