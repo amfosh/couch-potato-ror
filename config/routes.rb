@@ -9,11 +9,12 @@ Rails.application.routes.draw do
 
   get 'auth/google_oauth2/callback' => 'sessions#omniauth'
 
-  # get '/user/:id' => 'shows#show'
+  get '/shows/:id/notes' => 'notes#edit'
   # get 'shows' => 'shows#shows'
-  patch 'shows/:id', to: 'shows#update'
+  resources :statuses
+  resources :shows, only: [:index, :show, :new, :create, :edit, :update, :delete]
   resources :shows do 
-    resources :notes, only: [:new, :index]
+    resources :notes, only: [:new, :index, :edit]
   end
   resources :notes
   resources :users, only: [:show]

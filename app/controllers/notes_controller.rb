@@ -11,13 +11,22 @@ class NotesController < ApplicationController
  
      def create
         @note = current_user.notes.build(note_params)
-        byebug
         if @note.save
             redirect_to note_path(@note)
         else
             render :new
         end
     end
+
+    def edit
+        @note = Note.find_by_id(params[:id])
+    end
+
+    def update
+        @note = Note.find_by_id(params[:id])
+        @note.update(content: params[:note][:content])
+        redirect_to note_path(@note)
+      end
 
     def show
         @note = Note.find_by_id(params[:id])
@@ -27,7 +36,8 @@ class NotesController < ApplicationController
         if @show = Show.find_by_id(params[:show_id])
             @notes = @show.notes
         else
-            @notes = Note.all
+            @user = current_user
+            @notes = current_user.notes 
         end
     end
 

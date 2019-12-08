@@ -18,25 +18,31 @@ class ShowsController < ApplicationController
 
   def show 
     @show = Show.find(params[:id])
+    unless session[:user_id] == @show.user_id
+      flash[:notice] = "You don't have access to that page!"
+      redirect_to shows_path(session[:user_id])
+      return
+    end
   end
   
   def edit
+    @show = Show.find(params[:id])
   end
 
-  def delete
+  def destroy
     @show = Show.find_by_id(params[:id])
     if logged_in? && @show.user_id == current_user.id	
       @show.destroy	
-      redirect_to show_path
+      redirect_to shows_path(session[:user_id])
+    else
+      flash[:notice] = "You don't have access to that page!"
     end
   end
 
   def update
-    if @show.update(show_params)
-      redirect_to show_path(@show)
-    else
-      render :edit
-    end
+    @show = Show.find(params[:id])
+    @show.update(show_title: params[:show][:show_title])
+    redirect_to show_path(@show)
   end
 
   def index
@@ -46,10 +52,31 @@ class ShowsController < ApplicationController
     end
   end
 
+  def delete
+    @show = Show.find_by_id(params[:id])
+    if logged_in? && @show.user_id == current_user.id
+      @show.destroy
+      redirect_to show_path
+    else
+      redirect_to show_path
+    end
+  end
+
+  def show_number
+    @show = Show.find_by_id(params[:id])
+    if @show.status_id = 1 
+      "Watched"
+    elsif @show.status_id = 2 
+      "Watching"
+    else
+      "To Watch"
+    end
+  end
+
   private
 
   def show_params
-    params.require(:show).permit(:show_title, :status_id, status_attributes: [:watched])
+    params.require(:show).permit(:show_title, :status_id, statuses_attributes: [:id, :watched])
   end
 
   def set_show
