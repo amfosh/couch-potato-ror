@@ -1,17 +1,7 @@
-<h1>Edit Your Note</h1>
+<h1>Your Note</h1>
+   <% if @note.show.exists? %>
+     <h3><%= link_to @note.show.show_title, show_path(@note.show) %></h3>
+        <p><%= note.content %>
+        <% else puts "You have not written a note about this show." %>
+        <%= end %>
 
-<%= form_for(@note) do |f| %>
-  <% if params[:show_id] %>
-    <%= f.hidden_field :show_id %>
-  <% else %>
-    <div>
-      <%= f.label :show_id, "Select a Show" %>
-      <%= f.collection_select(:show_id, Show.all, :id, :show_title)%>
-    </div>
-  <% end %>
-<div>
-  <%= f.label :content %>
-  <%= f.text_area :content, size: "30x2" %>
-</div>
-<%= f.submit "Update Note" %>
-<% end %>

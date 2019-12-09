@@ -3,7 +3,7 @@
 
    <% @shows.each do |s| %>
    <h4><li><%= link_to s.show_title, show_path(s.id) %></h4>
-    <p><%= s.show_number %> - <%= link_to "Show Notes", show_notes_path(s.id) %> - <%= link_to "Delete", s, method: :delete, data: { confirm: "Really?" } %>
+    <p><%= s.show_status %> - <%= link_to "Show Notes", show_notes_path(s.id) %> - <%= link_to "Delete", s, method: :delete, data: { confirm: "Really?" } %>
 <% end %>
 <p>Add a new show <%= link_to "here.", new_show_path %></p>
 

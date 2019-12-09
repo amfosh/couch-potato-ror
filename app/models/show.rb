@@ -15,4 +15,15 @@ class Show < ApplicationRecord
             errors.add(:show_title, 'is already on your list')
         end
     end
+
+    def show_status
+        show = Show.find_by(show_title: show_title, user_id: user_id)
+        if show.status_id = 1 
+            "Watched"
+        elsif show.status_id = 2 
+            "Watching"
+        else
+            "To Watch"
+        end
+    end
 end

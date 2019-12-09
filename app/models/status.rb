@@ -1,3 +1,3 @@
 class Status < ApplicationRecord
-    has_many :shows
+    belongs_to :shows
 end

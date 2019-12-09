@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :statuses
   resources :shows, only: [:index, :show, :new, :create, :edit, :update, :delete]
   resources :shows do 
-    resources :notes, only: [:new, :index, :edit]
+    resources :notes, only: [:new, :create, :index, :show, :edit]
   end
   resources :notes
   resources :users, only: [:show]

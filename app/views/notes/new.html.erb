@@ -4,11 +4,11 @@
 
 <%= form_for(@note) do |f| %>
   <% if params[:show_id] %>
-    <%= f.hidden_field :show_id %>
+    <%= f.hidden_field :show_id, value: @show.id %>
   <% else %>
     <div>
       <%= f.label :show_id, "Select a Show" %>
-      <%= f.collection_select(:show_id, Show.all, :id, :show_title)%>
+      <%= f.collection_select(:show_id, current_user.shows, :id, :show_title)%>
     </div>
   <% end %>
 <div>

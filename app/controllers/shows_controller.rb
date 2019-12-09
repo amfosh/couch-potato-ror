@@ -62,21 +62,10 @@ class ShowsController < ApplicationController
     end
   end
 
-  def show_number
-    @show = Show.find_by_id(params[:id])
-    if @show.status_id = 1 
-      "Watched"
-    elsif @show.status_id = 2 
-      "Watching"
-    else
-      "To Watch"
-    end
-  end
-
   private
 
   def show_params
-    params.require(:show).permit(:show_title, :status_id, statuses_attributes: [:id, :watched])
+    params.require(:show).permit(:show_title, status_attributes: [:watched])
   end
 
   def set_show
