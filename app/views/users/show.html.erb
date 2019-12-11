@@ -1,8 +1,2 @@
 <h1>Welcome, <%= @user.username %>!</h1><br>
-<h4>Your Watchlist:</h4>
-   <% @user.shows.each do |s| %>
-   <h4><li><%= link_to s.show_title, show_path(s.id) %></h4>
-    <p><%= s.status_id %> - <%= link_to "Show Notes", show_notes_path(s.id) %>
-<% end %>
-
-<p>Add a new show <%= link_to "here.", new_show_path %></p>
+<h4><%= link_to "Go to your watchlist", shows_path %></h4>

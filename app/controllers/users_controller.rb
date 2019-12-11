@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
     
-  def logged_in?
-    !current_user.nil?
-  end
+  # def logged_in?
+  #   !current_user.nil?
+  # end
+
 
   def new
     @user = User.new
@@ -19,9 +20,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    redirect_if_not_logged_in
     @user = User.find_by_id(params[:id])
-    redirect_to "/" if !@user
+    if @user != current_user
+      flash[:message] = "You can only view your own list."
+      redirect_to user_path(current_user)
+    end
   end
 
   private

@@ -1,5 +1,5 @@
 class ShowsController < ApplicationController
-  before_action :set_show, only:[:show, :edit, :update]
+  before_action :set_show, only:[:show, :edit, :update, :destroy]
   before_action :redirect_if_not_logged_in
 
   def new 
@@ -30,13 +30,8 @@ class ShowsController < ApplicationController
   end
 
   def destroy
-    @show = Show.find_by_id(params[:id])
-    if logged_in? && @show.user_id == current_user.id	
-      @show.destroy	
-      redirect_to shows_path(session[:user_id])
-    else
-      flash[:notice] = "You don't have access to that page!"
-    end
+    Show.find(params[:id]).destroy
+    redirect_to shows_path
   end
 
   def update
@@ -52,20 +47,20 @@ class ShowsController < ApplicationController
     end
   end
 
-  def delete
-    @show = Show.find_by_id(params[:id])
-    if logged_in? && @show.user_id == current_user.id
-      @show.destroy
-      redirect_to show_path
-    else
-      redirect_to show_path
-    end
-  end
+  # def delete
+  #   @show = Show.find_by_id(params[:id])
+  #   if logged_in? && @show.user_id == current_user.id
+  #     @show.destroy
+  #     redirect_to show_path
+  #   else
+  #     redirect_to show_path
+  #   end
+  # end
 
   private
 
   def show_params
-    params.require(:show).permit(:show_title, status_attributes: [:watched])
+    params.require(:show).permit(:show_title, :status_id)
   end
 
   def set_show
