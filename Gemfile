@@ -28,6 +28,7 @@ gem 'dotenv-rails'
 gem 'pry'
 gem 'bcrypt'
 gem 'jquery-rails'
+gem 'nested_form_fields'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

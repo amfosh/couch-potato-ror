@@ -1,8 +1,8 @@
 <h2>Add a show you want to watch:</h2>
 
-<%= render partial: 'layouts/errors', locals: {object: @show}  %>
+<%# <%= render partial: 'layouts/errors', locals: {object: @show}  %> 
 
-  <%= form_for(@show) do |f| %> 
+  <%= form_for Show.new do |f| %> 
   <div>
     <%= f.label :show_title %>
     <%= f.text_field :show_title %><br>
