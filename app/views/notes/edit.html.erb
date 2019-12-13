@@ -1,7 +1,3 @@
-<h1>Your Note</h1>
-   <% if @note.show.exists? %>
-     <h3><%= link_to @note.show.show_title, show_path(@note.show) %></h3>
-        <p><%= note.content %>
-        <% else puts "You have not written a note about this show." %>
-        <%= end %>
+<h1><%= @note.show.show_title%></h1>
+<p><%= @note.content%></p>
 

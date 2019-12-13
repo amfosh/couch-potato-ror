@@ -1,9 +1,4 @@
 class UsersController < ApplicationController
-    
-  # def logged_in?
-  #   !current_user.nil?
-  # end
-
 
   def new
     @user = User.new

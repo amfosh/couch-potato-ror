@@ -1,7 +1,6 @@
 class ShowsController < ApplicationController
-  # before_action :set_show, only:[:show, :edit, :update, :destroy]
+
   before_action :redirect_if_not_logged_in
-  # accepts_nested_attributes_for :notes
 
   def new 
     @show = Show.new
@@ -61,7 +60,7 @@ class ShowsController < ApplicationController
   private
 
   def show_params
-    params.require(:show).permit(:show_title, :status_id, notes_attributes: [:id, :content])
+    params.require(:show).permit(:show_title, :status_id, :note_id)
   end
 
   def set_show

@@ -10,14 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_08_115907) do
+ActiveRecord::Schema.define(version: 2019_12_13_125231) do
 
   create_table "notes", force: :cascade do |t|
     t.string "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "show_id"
-    t.index ["show_id"], name: "index_notes_on_show_id"
   end
 
   create_table "shows", force: :cascade do |t|
@@ -46,6 +44,5 @@ ActiveRecord::Schema.define(version: 2019_12_08_115907) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "notes", "shows"
   add_foreign_key "statuses", "shows"
 end

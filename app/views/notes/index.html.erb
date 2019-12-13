@@ -1,9 +1,4 @@
-<% if @show %>
-  <h1>Notes for <%= @show.show_title%></h1>
-<% else %>
-  <h1>All Notes </h1>
-<% end %>
-
+<h1>All Notes </h1>
 <ul>
 <% @notes.each do |note| %>
 
@@ -13,4 +8,4 @@
 
 <% end %>
 </ul>
-<p>Add a new note <%= link_to "here.", new_note_path %></p>
+<p>Add a new note <%= link_to "here.", new_show_note_path %></p> 
