@@ -1,5 +1,4 @@
 class ShowsController < ApplicationController
-
   before_action :redirect_if_not_logged_in
 
   def new 
@@ -17,7 +16,7 @@ class ShowsController < ApplicationController
   end
 
   def show 
-    @show = Show.find(params[:id])
+    @show = Show.find_by_id(params[:id])
     unless session[:user_id] == @show.user_id
       flash[:notice] = "You don't have access to that page!"
       redirect_to shows_path(session[:user_id])
@@ -43,7 +42,7 @@ class ShowsController < ApplicationController
   def index
     if logged_in?
       @user = current_user
-      @shows = current_user.shows 
+      @shows = current_user.shows.just_added
     end
   end
 
@@ -63,10 +62,10 @@ class ShowsController < ApplicationController
     params.require(:show).permit(:show_title, :status_id, :note_id)
   end
 
-  def set_show
-    @show = Show.find_by(params[:id])
-    redirect_to show_path if !@show
-  end
+  # def set_show
+  #   @show = Show.find_by_id(params[:id])
+  #   redirect_to show_path if !@show
+  # end
 
   # before_action :require_login
 

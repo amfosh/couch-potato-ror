@@ -9,12 +9,13 @@ Rails.application.routes.draw do
 
   get 'auth/google_oauth2/callback' => 'sessions#omniauth'
 
-  # get '/shows/:id/notes' => 'notes#edit'
-  # get 'shows' => 'shows#shows'
 
   resources :shows, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   resources :shows do 
     resources :notes, only: [:new, :create, :index, :show, :edit]
+  end
+  resources :shows do
+    get :just_added, on: :collection
   end
   resources :notes
   resources :users, only: [:show]

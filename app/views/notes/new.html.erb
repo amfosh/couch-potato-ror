@@ -5,9 +5,8 @@
 <%= form_for @note do |f| %>
 
     <%= f.label :content %>
-    <%= f.text_area :content %><br>
-      <%# <%= f.label :id, "Select a Show" %>
-      <%# <%= f.collection_select(:id, current_user.shows, :id, :show_title)%>
+    <%= f.text_area :content, size: "25x10" %>
+
 <%= f.submit "Add Note" %>
     </div>
 <% end %>

@@ -1,4 +1,9 @@
 <%= @show.show_title %></h2><br>
-<p><%= link_to "Edit", edit_show_path %></p>
-  <%= button_to "Delete", show_path(@show), method: :delete, data: { confirm: "Really?" } %>
- <p><%= link_to "Add Note", new_show_note_path(@show.id) %></p>
+<%= link_to "Edit", edit_show_path %><br>
+
+  <%# <% if @show.notes.present? %>
+  <%# <%= link_to note.show.show_title, show_note_path(note.show) %>
+        <%# <p><%= note.content %> 
+  <%# <% else %> 
+ <%= link_to "Add Note", new_show_note_path(@show.id) %><br>
+ <%= button_to "Delete", show_path(@show), method: :delete, data: { confirm: "Really?" } %><br>

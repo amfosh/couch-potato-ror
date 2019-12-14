@@ -2,23 +2,33 @@ class NotesController < ApplicationController
     before_action :redirect_if_not_logged_in
 
     def index
-        @notes = current_user.notes 
+        if @show = Show.find_by_id(params[:show_id])
+        @notes = @show.notes
+      else
+        @note = current_user.notes
+      end
     end
 
     def new
-        @note = Note.new
+        if @show = Show.find_by_id(params[:id])
+            @note = @show.notes.build
+        else
+            @note = Note.new
+        end
     end
 
+
      def create
-        @note = Note.new(note_params)
+        @note = current_user.notes.build(note_params)
         if @note.save
-          redirect_to show_note_path
+          redirect_to note_path(@note)
         else
-          render 'new'
+          render :new
         end
      end
 
     def show
+        @note = Note.find_by_id(params[:id])
     end
 
     # def edit
@@ -36,7 +46,7 @@ class NotesController < ApplicationController
     private
 
     def note_params
-        params.require(:note).permit(:content)
+        params.require(:note).permit(:content, :show_id)
     end
 
     # def set_show
