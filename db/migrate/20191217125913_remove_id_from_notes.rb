@@ -1,4 +1,4 @@
-class RemoveShowIdFromNotes < ActiveRecord::Migration[6.0]
+class RemoveIdFromNotes < ActiveRecord::Migration[6.0]
   def change
 
     remove_column :notes, :show_id, :integer

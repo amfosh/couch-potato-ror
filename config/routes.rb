@@ -15,9 +15,6 @@ Rails.application.routes.draw do
   resources :shows do 
     resources :notes, only: [:new, :create, :index, :show, :edit]
   end
-  resources :shows do
-    get :just_added, on: :collection
-  end
   resources :notes
   resources :users, only: [:show]
   end

@@ -1,8 +1,9 @@
-<h1>Add a Note</h1>
+<h1>Add a Note for</h1>
 
-<%= render partial: 'layouts/errors', locals: {object: @note} %>
+<%# <%= render partial: 'layouts/errors', locals: {object: @note} %> 
 
-<%= form_for @note do |f| %>
+<%= form_for Note.new do |f| %>
+<%= f.hidden_field :show_id, :value => params[:show_id] %>
 
     <%= f.label :content %>
     <%= f.text_area :content, size: "25x10" %>
