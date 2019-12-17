@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
 
   get 'auth/google_oauth2/callback' => 'sessions#omniauth'
+  get '/just_added' => 'shows#just_added'
 
 
   resources :shows, only: [:index, :show, :new, :create, :edit, :update, :destroy]
