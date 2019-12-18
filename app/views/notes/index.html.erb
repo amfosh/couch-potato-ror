@@ -1,13 +1,12 @@
-<% if @show %>
-  <h1>Notes for <%= @show.show_title%></h1>
+<h1>Notes for <%= @show.show_title%></h1>
+<% if @notes.count == 0 %>
+  <h4>You haven't written any notes about this show yet.</h4>
 <% else %>
-<h1>All Notes</h1>
-<% end %>
-<% @notes.each do |note| %>
+<ul>
+<% @notes.each do |n| %>
      <li>
-        <h3><%= link_to note.show.show_title, show_note_path(note.show) %></h3>
-        <p><%= note.content %>
-
+        <%# <h3><%= link_to n.show.show_title, show_path(n.show) %> 
+        <p><%= n.content %></p>
 <% end %>
 </ul>
-<p>Add a new note <%= link_to "here.", new_show_note_path %></p> 
+<% end %>

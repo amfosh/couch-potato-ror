@@ -2,12 +2,18 @@ class NotesController < ApplicationController
     before_action :redirect_if_not_logged_in
 
     def index
-      if @show = Show.find_by_id(params[:id])
+      if @show = Show.find_by_id(params[:show_id])
         @notes = @show.notes
       else
-        @note = current_user.notes
+        @notes = Note.all
       end
     end
+    #   if @show = Show.find_by_id(params[:id])
+    #     @notes = @show.notes
+    #   else
+    #     @notes = current_user.notes
+    #   end
+    # end
 
     def new
       if @show = Show.find_by(id: params[:id])
@@ -80,7 +86,7 @@ class NotesController < ApplicationController
     private
 
     def note_params
-        params.require(:note).permit(:content, :show_id)
+        params.require(:note).permit(:content, :show_id, :user_id, show_attributes: :show_title)
     end
 
     # def set_show
