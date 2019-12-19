@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-    has_many :shows
     has_many :notes
+    has_many :shows, through: :notes
     has_many :statuses, through: :shows
     validates :username, uniqueness: true,  presence: true
     validates :email, presence: true

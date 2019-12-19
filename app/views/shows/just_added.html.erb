@@ -2,5 +2,5 @@
 
    <% @shows.each do |s| %>
    <h4><li><%= link_to s.show_title, show_path(s.id) %></h4>
-    <p><%= s.show_status %> - <%= link_to "Show Notes", show_notes_path(s.id) %>
+    <p><%= link_to "Show Notes", show_notes_path(s.id) %>
 <% end %>

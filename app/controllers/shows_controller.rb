@@ -25,7 +25,7 @@ class ShowsController < ApplicationController
   end
   
   def edit
-    @show = Show.find(params[:id])
+    @show = Show.find_by(params[:id])
   end
 
   def destroy
@@ -52,16 +52,6 @@ class ShowsController < ApplicationController
       @shows = current_user.shows.just_added
     end
   end
-
-  # def delete
-  #   @show = Show.find_by_id(params[:id])
-  #   if logged_in? && @show.user_id == current_user.id
-  #     @show.destroy
-  #     redirect_to show_path
-  #   else
-  #     redirect_to show_path
-  #   end
-  # end
 
   private
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_18_221905) do
+ActiveRecord::Schema.define(version: 2019_12_19_131057) do
 
   create_table "notes", force: :cascade do |t|
     t.string "content"
@@ -22,12 +22,8 @@ ActiveRecord::Schema.define(version: 2019_12_18_221905) do
 
   create_table "shows", force: :cascade do |t|
     t.string "show_title"
-    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "note_id"
-    t.integer "status_id"
-    t.string "status"
   end
 
   create_table "statuses", force: :cascade do |t|

@@ -2,8 +2,8 @@
 <h2>Your Watchlist:</h2>
 <%= link_to "Sort shows by date added", just_added_path %><br><br>
    <% @shows.each do |s| %>
-   <h4><li><%= link_to s.show_title, show_path(s.id) %></h4>
-    <p><%= s.show_status %> - <%= link_to "Show Notes", show_notes_path(s.id) %>
+   <h4><li><%= s.show_title %></h4>
+    <%= link_to "Show Notes", show_notes_path(s.id) %> - <%= link_to "Edit Show", edit_show_path(s.id) %><br><br>
 <% end %>
 <p>Add a new show <%= link_to "here.", new_show_path %></p>
 
