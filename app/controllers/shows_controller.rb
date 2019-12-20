@@ -21,11 +21,6 @@ class ShowsController < ApplicationController
 
   def show 
     @show = Show.find_by_id(params[:id])
-    # unless session[:user_id] == @show.user_id
-    #   flash[:notice] = "You don't have access to that page!"
-    #   redirect_to shows_path(session[:user_id])
-    #   return
-    # end
   end
   
   def edit
