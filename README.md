@@ -2,7 +2,7 @@
 
 ## Overview
 
-CouchPotato is a Ruby on Rails app that allows users to keep track of movies and TV shows they'd like to watch, mark them with a status, and add notes to shows. To use the app, one must sign up with an email address or Google authorization. Once logged in, a user has the ability to view only their own watchlist. They will also be able to edit and delete their own entries.
+CouchPotato is a Ruby on Rails app that allows users to keep track of movies and TV shows they'd like to watch and add notes to shows. To use the app, one must sign up with an email address or Google authorization. Once logged in, a user has the ability to view only their own watchlist. They will also be able to edit and delete their own entries.
 
 ## Installation
 
