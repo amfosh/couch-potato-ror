@@ -4,11 +4,7 @@
     <%= f.label :show_title %>
     <%= f.text_field :show_title %><br>
   </div>
-  <div>
-  Update your Watch Status:
-  <%= f.collection_select(:status_id, Status.all, :id, :watched) %>
-  </div>
-    <%= f.submit %>
-  <% end %>
-
-<p>Go back to your <a href="/shows">watchlist</a>.</p><br>
+  <%= f.submit %> 
+    <% end %>
+<%= button_to "Delete", show_path(@show), method: :delete, data: { confirm: "Really?" } %><br>
+<p>Go back to your <a href="/shows">watchlist</a>.</p>

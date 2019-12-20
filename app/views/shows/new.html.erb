@@ -8,9 +8,13 @@
     <%= f.text_field :show_title %><br>
   </div>
   <div>
-  Select a Watch Status:
-  <%= f.collection_select(:status_id, Status.all, :id, :watched) %>
+    <%=f.fields_for :note do |b| %>
+      <%= b.label :content %>
+      <%= b.text_area :content %>
+    <% end %>
   </div>
+  <br>
+
     <%= f.submit %>
   <% end %>
 

@@ -1,9 +1,10 @@
 class User < ApplicationRecord
-    has_many :shows
-    has_many :notes, through: :shows
-    has_many :statuses, through: :shows
+    has_many :notes
+    has_many :shows, through: :notes
+    # has_many :statuses, through: :shows
     validates :username, uniqueness: true,  presence: true
     validates :email, presence: true
+    accepts_nested_attributes_for :notes
     has_secure_password
 
     def self.from_omniauth(auth)
