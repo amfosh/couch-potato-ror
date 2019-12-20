@@ -16,7 +16,8 @@ class NotesController < ApplicationController
     # end
 
     def new
-      if @show = Show.find_by(id: params[:id])
+      # byebug
+      if @show = Show.find_by(id: params[:show_id])
           @note = @show.notes.build
       else
           @note = Note.new
@@ -71,7 +72,8 @@ class NotesController < ApplicationController
 
 
     def show
-        @note = Note.find_by_id(params[:id])
+      @show = Show.find_by(id: params[:show_id])
+      @note = Note.find_by_id(params[:id])
     end
 
     # def edit

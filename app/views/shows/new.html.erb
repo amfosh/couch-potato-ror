@@ -7,6 +7,14 @@
     <%= f.label :show_title %>
     <%= f.text_field :show_title %><br>
   </div>
+  <div>
+    <%=f.fields_for :note do |b| %>
+      <%= b.label :content %>
+      <%= b.text_area :content %>
+    <% end %>
+  </div>
+  <br>
+
     <%= f.submit %>
   <% end %>
 

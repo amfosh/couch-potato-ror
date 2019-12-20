@@ -6,9 +6,13 @@ class ShowsController < ApplicationController
   end
 
   def create
-    @show = Show.new(show_params)
-    @show.user_id = session[:user_id]
+    @show = Show.new(show_params.except(:note))
+    # byebug
     if @show.save
+      @note = Note.new(show_params[:note])
+      @note.user_id = session[:user_id]
+      @note.show_id = @show.id
+      @note.save
       redirect_to show_path(@show)
     else
       render :new
@@ -17,15 +21,15 @@ class ShowsController < ApplicationController
 
   def show 
     @show = Show.find_by_id(params[:id])
-    unless session[:user_id] == @show.user_id
-      flash[:notice] = "You don't have access to that page!"
-      redirect_to shows_path(session[:user_id])
-      return
-    end
+    # unless session[:user_id] == @show.user_id
+    #   flash[:notice] = "You don't have access to that page!"
+    #   redirect_to shows_path(session[:user_id])
+    #   return
+    # end
   end
   
   def edit
-    @show = Show.find_by(params[:id])
+    @show = Show.find(params[:id])
   end
 
   def destroy
@@ -56,6 +60,6 @@ class ShowsController < ApplicationController
   private
 
   def show_params
-    params.require(:show).permit(:show_title, :status_id, :note_id)
+    params.require(:show).permit(:show_title, :status_id, :note_id, note: :content)
   end
 end
