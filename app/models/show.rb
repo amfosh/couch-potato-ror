@@ -5,7 +5,6 @@ class Show < ApplicationRecord
     accepts_nested_attributes_for :notes
     scope :just_added, -> { order(created_at: :desc) }
 
-
     # validate :not_a_duplicate
 
     # def not_a_duplicate
