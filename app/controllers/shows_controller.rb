@@ -41,14 +41,14 @@ class ShowsController < ApplicationController
   def index
     if logged_in?
       @user = current_user
-      @shows = current_user.shows
+      @shows = current_user.shows.uniq
     end
   end
 
   def just_added
     if logged_in?
       @user = current_user
-      @shows = current_user.shows.just_added
+      @shows = current_user.shows.just_added.uniq
     end
   end
 
