@@ -2,11 +2,13 @@
 
 <%= render partial: 'layouts/errors', locals: {object: @note} %>
 
-<%= form_for Note.new do |f| %>
+<%= form_for @note do |f| %>
 <%= f.hidden_field :show_id, :value => params[:show_id] %>
 
     <%= f.label :content %>
     <%= f.text_area :content, size: "25x10" %>
+    
+    <%= f.select(:status, options_for_select([['Watched', "Watched"], ['To-Watch', "To-Watch"], ['Watching', "Watching"]])) %>
 
 <%= f.submit "Add Note" %>
     </div>

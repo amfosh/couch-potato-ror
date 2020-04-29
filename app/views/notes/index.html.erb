@@ -4,8 +4,10 @@
 <% else %>
 <ul>
 <% @notes.each do |n| %>
-     <li>
-        <p><%= n.content %></p>
+  <li>
+    <%= n.content %>
+    <%= n.status %>
+  </li>
 <% end %>
 </ul>
 <% end %>
