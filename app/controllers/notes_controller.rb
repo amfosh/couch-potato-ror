@@ -18,15 +18,6 @@ class NotesController < ApplicationController
     end
     
     def create
-      # if current_user && @show = Show.find_by(id: params[:id])
-    #   @note = @show.notes.create!(note_params)
-    #   @note.user = current_user
-    #   if @note.save
-    #     redirect_to show_note_path(@note.show, @note)
-    #   else
-    #     render :new
-    #   end
-    # else
       @note = current_user.notes.create!(note_params)
       if @note.save
         redirect_to show_note_path(@note.show, @note)
